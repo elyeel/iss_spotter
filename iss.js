@@ -39,4 +39,27 @@ const fetchMyIP = function(callback) {
   });
 };
 
+const fetchCoordsByIP = function(ip, callback) {
+  const addressIp = `https://ipvigilante.com/${ip}`;
+  request(addressIp, (error, response, body) => {
+    if (error) {
+      callback(error, null);
+      return;
+    }
+    // if non-200 status, assume server error
+    if (response.statusCode !== 200) {
+      const msg = `Status Code ${response.statusCode} when fetching IP. Response: ${body}`;
+      callback(Error(msg), null);
+      return;
+    }
+    // if we get here, all's well and we got the data
+    let datas = {};
+    datas["latitude"] = JSON.parse(body).data.latitude;
+    datas["longitude"] = JSON.parse(body).data.longitude;
+    callback(null, datas);
+  })
+
+}
+
 module.exports = { fetchMyIP };
+module.exports = { fetchCoordsByIP };
