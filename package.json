@@ -10,13 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/elyeel/iss_spotter.git"
   },
-  "author": "",
+  "author": "Risyardi Iswanto",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/elyeel/iss_spotter/issues"
   },
   "homepage": "https://github.com/elyeel/iss_spotter#readme",
   "dependencies": {
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7"
   }
 }
